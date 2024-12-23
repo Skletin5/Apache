@@ -2,6 +2,8 @@
 ## Indice
 1. Introducción
 2. Instalación
+3. Configuración
+4. Personalización
 
 ## Introducción
 El servicio Apache, conocido formalmente como Apache HTTP Server, es un servicio web de código abierto que se utiliza para subir contenido en la web.
