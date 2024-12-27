@@ -13,6 +13,7 @@ $ touch /var/www/pagina_1/index.html
 Escribimos un texto en cada index para que podamos saber que pagina estamos consultando al probarlo  
 /html11/index.html  
 `<h1>Soy la html1</h1>`
+
 /html2/index.html  
 `<h1>Soy la html2</h1>`
 
