@@ -18,7 +18,7 @@ Escribimos un texto en cada index para que podamos saber que pagina estamos cons
 `<h1>Soy la html2</h1>`
 
 tras esto, configuraremos `html1.conf` y `html2.conf`.  
-```
+```bash
 <VirtualHost IP_INTERFAZ:80>
         ServerAdmin webmaster@localhost
         ServerName www.example.org
@@ -44,6 +44,22 @@ Luego reiniciamos el servicio apache2.
 `$ sudo systemctl restart apache2`
 
 Tras esto podemos comprobar que funciona buscando las direcciones ip asociadas a las paginas en nuestro navegador.  
+
+## Por Puerto
+Para esto podemos aprovechar las dos paginas configuradas, solo deberemos cambiar unas pocas cosas.  
+Primero volvemos a los ficheros de configuración de las zonas virtuales y modificamos el encabezado:  
+```bash
+<VirtualHost *:PUERTO_DESEADO>
+...
+```  
+Tras configurar un puerto en cada pagina, deberemos dirigirnos al fichero de coniguración `/etc/apache2/ports.conf`. Aquí solo tendremos que agregar puertos a la lista:
+```bash
+Listen 80
+Listen (puerto pagina 1)
+Listen (puerto pagina 2)
+```
+Tras esto reiniciamos el servicio apache con `$ systemctl restart apache2` y comprobamos que funcionan accediendo a la dirección IP del servidor seguido por ":PUERTO_DE_LA_PAGINA".
+
 ## Por nombre
 Primero devemos crear los directorios para cada pagina:  
 ```
