@@ -19,7 +19,7 @@ Tras instalarlo ya tendremos disponible y funcionando nuestro servidor apache2, 
 
 ## Configuración
 Disponemos de varios ficheros de configuración para personalizar nuestro servidor:  
-- [/etc/apache/sites-available/000-default.conf](/000-default.md): Configuración de las zonas virtuales.  
+- [/etc/apache/sites-available/000-default.conf](/zonas_virtuales.md): Configuración de las zonas virtuales.  
 - [/etc/apache/apache.conf](/apache_conf.md): Directivas de control de conexión.  
 
 ## Personalización
