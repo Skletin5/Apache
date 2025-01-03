@@ -42,6 +42,6 @@ Este parrafo nos permite delimitar un directorio al cual apache podra acceder o 
   A continuacion mostrare el significado de cada linea:  
   - `Options Indexes`: Si apache no encuentra un fichero que mostrar al realizarse la busqueda, la opcion indexes nos mostrara una lista con el contenido del directorio accedido.
   - `Options FollowSymLinks`: Permite que los enlaces simbolicos funcionen.
-  - `Options Multiviews`: Permite que al existir varias versiones por idiomas del `index.hmtl` el navegador escoja el del idioma que tenga definido como prioritario. En caso de que no disponga de ninguno, apache mostrar el primero indicado en el fichero `/etc/apache2/mods-enabled/negotiation.conf.  
+  - `Options Multiviews`: Permite que al existir varias versiones por idiomas del `index.hmtl` el navegador escoja el del idioma que tenga definido como prioritario. En caso de que no disponga de ninguno, apache mostrar el primero indicado en el fichero `/etc/apache2/mods-enabled/negotiation.conf`.  
   - `Require all`: Si a continuación escribimos `granted` permitiremos a apache mostrar este directorio, `denied` prohibe el acceso.  
   
