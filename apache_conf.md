@@ -17,8 +17,7 @@ Aqui dispondre una lista de distintas directivas de apache, que hacen, su valor 
       Valor recomendado: LogLevel crit  
 - `Directory`: Da permisos de acceso a directorios, en este caso mostrare como dar y revocar acceso a directorios con ejemplos del propio fichero.  
       Conceder permisos:
-
-
+  
       <Directory /var/www/>
               Options Indexes FollowSymLinks
               AllowOverride None
