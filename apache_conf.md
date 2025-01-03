@@ -16,7 +16,8 @@ Aqui dispondre una lista de distintas directivas de apache, que hacen, su valor 
       Valor predeterminado: LogLevel warn
       Valor recomendado: LogLevel crit  
 - `Directory`: Da permisos de acceso a directorios, en este caso mostrare como dar y revocar acceso a directorios con ejemplos del propio fichero.  
-      Conceder permisos:  
+Conceder permisos:
+  
       ```bash
       <Directory /var/www/>
               Options Indexes FollowSymLinks
@@ -26,7 +27,8 @@ Aqui dispondre una lista de distintas directivas de apache, que hacen, su valor 
       ```
 Este parrafo concederia permiso para acceder al contenido del directorio `/var/www/` donde se hayan los `index.html`.
 
-      Revocar permisos:  
+Revocar permisos:  
+
       ```bash
       <Directory />
             Options FollowSymLinks
