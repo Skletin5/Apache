@@ -53,12 +53,12 @@ Este parrafo nos permite delimitar un directorio al cual apache podra acceder o 
   - `Options Indexes`: Si apache no encuentra un fichero que mostrar al realizarse la busqueda, la opcion indexes nos mostrara una lista con el contenido del directorio accedido.
   - `Options FollowSymLinks`: Permite que los enlaces simbolicos funcionen.
   - `Options Multiviews`: Permite que al existir varias versiones por idiomas del `index.hmtl` el navegador escoja el del idioma que tenga definido como prioritario. En caso de que no disponga de ninguno, apache mostrar el primero indicado en el fichero `/etc/apache2/mods-enabled/negotiation.conf`.
-  - `Order`: Nos permite indicar si queremos permitir o denegar el acceso global y agregar excepciones.
-            `Order allow,deny`: Prohibe le acceso a todo el mundo menos a redes o direcciones en concreto.  
-            `Order deny,allow`: Todo el mundo puede acceder menos ciertas redes o direcciones cocretas.
-    Para indicar dichas excepciones debemos escribir los siguiente tras la linea de Order:
-            `Allow from DIRECCION_IP o DIRECCION_DE_RED/MASCARA`: Da permiso de acceso a ciertas direcciones o redes.
-            `Deny from DIRECCION_IP O DIRECCION_DE_RED/MASCARA`: Prohibe el acceso a ciertas direcciones o redes.
-    Para incluir varias direcciones debemos separar cada una con espacios.
+  - `Order`: Nos permite indicar si queremos permitir o denegar el acceso global y agregar excepciones.  
+            `Order allow,deny`: Prohibe le acceso a todo el mundo menos a redes o direcciones en concreto.   
+            `Order deny,allow`: Todo el mundo puede acceder menos ciertas redes o direcciones cocretas.  
+    Para indicar dichas excepciones debemos escribir los siguiente tras la linea de Order:  
+            `Allow from DIRECCION_IP o DIRECCION_DE_RED/MASCARA`: Da permiso de acceso a ciertas direcciones o redes.  
+            `Deny from DIRECCION_IP O DIRECCION_DE_RED/MASCARA`: Prohibe el acceso a ciertas direcciones o redes.  
+    Para incluir varias direcciones debemos separar cada una con espacios.  
   - `Require all`: Si a continuación escribimos `granted` permitiremos a apache mostrar este directorio, `denied` prohibe el acceso.  
   
