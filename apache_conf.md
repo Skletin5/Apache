@@ -23,12 +23,16 @@ Aqui dispondre una lista de distintas directivas de apache, que hacen, su valor 
       `DirectoryIndex NOMBRE_DEL_FICHERO`  
   Podemos agregar varios ficheros para que muestre el siguiente en caso de que el primero no se encuentre.
 
-- `Alias`: podemos definir un alias para una ruta.  
+- `Alias`: Podemos definir un alias para una ruta.  
       `Alias /NOMBRE_ALIAS /RUTA_REAL`  
   Por ejemplo is tubieramos la ruta `/var/www/sitio/contacto` y pusieramos el alias `/info`
   al escribir en el navegador `www.sitio.com/info` accederiamos contactos.  
 
   Otro uso para alias seria escribir un alias para otra ruta fuera del directorio original como `/var/www/enlaces`.
+
+- `Redirect`: Similar a los alias por en este caso se REDIRIGE a otra enlace, tanto ajeno como del propio servidor.
+      `Redirect /NOMBRE_REDIRECT ENLACE_A_REDIRIGIR`
+  Por ejemplo: `Redirect /navegador https://www.google.es`
   
 ## Directory
 Este parrafo nos permite delimitar un directorio al cual apache podra acceder o no, mas algunas opciones que definiran su funcionamiento.  
