@@ -59,6 +59,21 @@ Este parrafo nos permite delimitar un directorio al cual apache podra acceder o 
     Para indicar dichas excepciones debemos escribir los siguiente tras la linea de Order:  
             `Allow from DIRECCION_IP o DIRECCION_DE_RED/MASCARA`: Da permiso de acceso a ciertas direcciones o redes.  
             `Deny from DIRECCION_IP O DIRECCION_DE_RED/MASCARA`: Prohibe el acceso a ciertas direcciones o redes.  
-    Para incluir varias direcciones debemos separar cada una con espacios.  
+    Para incluir varias direcciones debemos separar cada una con espacios.
+
+    Adicionalmente, tambien podemos controlar el acceso por usuario y contraseña con las siguientes lineas:  
+          ```Bash
+          Order deny,allow
+          AuthUserfile "/etc/apache2/claves.txt"
+          AuthName "Identifiquese"
+          AuthType Basic
+          Require valid-user
+          ```
+          Tras escribir esto, `AuthUserfile` buscara en la ruta indicada el fichero que deberemos crear de la siguiente manera:  
+                `htpasswd -C RUTA_FICHERO.txt NOMBRE_USUARIO`: Este comando nos permitira registrar en el fichero que se creara con la opcion `-c` el usuario indicado.  
+          Tras esto nos permitira que escribamos una contraseña para el usuario, la cual re registrara en hash en el fichero.
+          Para agregar mas usuarios al mismo fichero, escribiremos el mismo comando de antes sin la opcion `-c` ya que el fichero ya esta creado.
+          `AuthName` enseña el mensaje entre comillas en la ventana que mostrara al navegador para pedir le usuario y contraseña.
+    
   - `Require all`: Si a continuación escribimos `granted` permitiremos a apache mostrar este directorio, `denied` prohibe el acceso.  
   
