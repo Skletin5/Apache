@@ -53,6 +53,7 @@ Este parrafo nos permite delimitar un directorio al cual apache podra acceder o 
   - `Options Indexes`: Si apache no encuentra un fichero que mostrar al realizarse la busqueda, la opcion indexes nos mostrara una lista con el contenido del directorio accedido.
   - `Options FollowSymLinks`: Permite que los enlaces simbolicos funcionen.
   - `Options Multiviews`: Permite que al existir varias versiones por idiomas del `index.hmtl` el navegador escoja el del idioma que tenga definido como prioritario. En caso de que no disponga de ninguno, apache mostrar el primero indicado en el fichero `/etc/apache2/mods-enabled/negotiation.conf`.
+  - `AllowOverride`: Indica si se permite el uso de ficheros [.htacces](Apache/htacces) sobre este directorio. `None` lo prohibe, `All` lo permite. 
   - `Order`: Nos permite indicar si queremos permitir o denegar el acceso global y agregar excepciones.  
             `Order allow,deny`: Prohibe le acceso a todo el mundo menos a redes o direcciones en concreto.   
             `Order deny,allow`: Todo el mundo puede acceder menos ciertas redes o direcciones cocretas.  
@@ -61,12 +62,13 @@ Este parrafo nos permite delimitar un directorio al cual apache podra acceder o 
             `Deny from DIRECCION_IP O DIRECCION_DE_RED/MASCARA`: Prohibe el acceso a ciertas direcciones o redes.  
     Para incluir varias direcciones debemos separar cada una con espacios.
 
-    Adicionalmente, tambien podemos controlar el acceso por usuario y contraseña con las siguientes lineas:  
+    Adicionalmente, tambien podemos controlar el acceso por usuario y contraseña mediante dos tipos de autentificación:
+    ### Basic
           
           Order deny,allow
-          AuthUserfile "/etc/apache2/claves.txt"
-          AuthName "Identifiquese"
           AuthType Basic
+          AuthUserFile "/etc/apache2/claves.txt"
+          AuthName "Identifiquese"
           Require valid-user
     
     Tras escribir esto, `AuthUserfile` buscara en la ruta indicada el fichero que deberemos crear de la siguiente manera:  
@@ -74,8 +76,36 @@ Este parrafo nos permite delimitar un directorio al cual apache podra acceder o 
     
     Tras esto nos permitira que escribamos una contraseña para el usuario, la cual re registrara en hash en el fichero.
     Para agregar mas usuarios al mismo fichero, escribiremos el mismo comando de antes sin la opcion `-c` ya que el fichero ya esta creado.
-    
-    `AuthName` enseña el mensaje entre comillas en la ventana que mostrara al navegador para pedir le usuario y contraseña.
+
+    Tambien podemos trabajar con grupos pero primero debemos habilitar el mod que nos permitira trabajar con ellos:  
+    `a2enmod authz_groupfile`
+    Tras esto deberemos hacer un restart.
+
+    Luego crearemos un fichero .txt donde almacenaremos los grupos y sus usuarios de la siguiente forma:
+
+          grupo1: usuario1
+          grupo2: usuario2 usuario3
+          grupo3: usuario4
+
+    Despues, en nuestra directiva directory, bajo Order escribiremos la siguiente linea:
+    `AuthGroupFile "RUTA_DEL_FICHERO"`  
+    Y modificaremos la linea `Require`:  
+    `Require group GRUPOS_PERMITIDOS`  
+    Pondremos los nombres de los grupos con permiso de acceso a la pagina, si son varios, separados por espacios.
+    ### Digest
+          
+          Order deny,allow
+          AuthType Digest
+          AuthUserFile "/etc/apache2/claves_digest.txt"
+          AuthName "Grupo1"
+          Require valid-user
+
+    En esta configuración solo cambia el AuthType por Digest y que en el AuthName deberemos poner los grupos con permiso de acceso.
+    Para que este metodo de autentificación funcione deberemos habilitar su modulo con el siguiente comando:
+    `a2enmod auth_digest`  
+    Y tras reiniciar el servicio, comenzaremos a crear el fichero con los grupos y usuarios con el siguiente comando:
+    `htdigest -C /etc/apache2/claves_digest.txt grupo1 usuario1`
+    Deberemos reintroducir el comando por cada usuario que deseemos introducir, pero muy importante de solo incluir `-c` la primera vez que introduzcamos el comando.
     
   - `Require all`: Si a continuación escribimos `granted` permitiremos a apache mostrar este directorio, `denied` prohibe el acceso.  
   
