@@ -4,7 +4,7 @@
 2. Instalación
 3. Configuración
 4. AWstats
-5. Personalización
+5. WordPress
 
 ## Introducción
 El servicio Apache, conocido formalmente como Apache HTTP Server, es un servicio web de código abierto que se utiliza para subir contenido en la web.
@@ -57,5 +57,6 @@ Escribimos `crontab -e` y seleccionamos un editor. Nos vamos al final de la pagi
 `0 */3 * * * /usr/lib/cgi-bin/awstats.pl -config=sitio1.com -update > /dev/null`  
 Con esto se repetira el script cada tres horas y no se mostrara en el terminal.
 
-## Personalización
-Podemos personalizar nuestra página editando el fichero index.html que viene en la zona virtual por defecto.
+## WordPress
+Es el gestor de contenido mas utilizado en el mundo, y para utilizarlo accederemos a su pagina oficial y lo descargaremos.  
+Despues de descargarlo moveremos el zip al directorio de nuestro dominio y lo decomprimiremos con unzip. Movemos el contenido de la carpeta wordpress que se nos habra creado a la raiz de nuestro dominio con `mv wordpress/* .` y luego borraremos dicha carpeta y el zip que descargamos.
