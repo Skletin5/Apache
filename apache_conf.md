@@ -38,9 +38,9 @@ Aqui dispondre una lista de distintas directivas de apache, que hacen, su valor 
       `ErrorDocument COD_ERROR 'MENSAJE DE ERROR' o /PAGINA_DE_ERROR_PERSONALIZADA`
   Por ejemplo: `ErrorDocument 404 'Pagina no encontrada' o /var/www/error/pagina_no_encontrada.html
   
-## Directory
+### Directory
 Este parrafo nos permite delimitar un directorio al cual apache podra acceder o no, mas algunas opciones que definiran su funcionamiento.  
-  
+
       <Directory /var/www/>
               Options Indexes FollowSymLinks
               AllowOverride None
@@ -108,4 +108,25 @@ Este parrafo nos permite delimitar un directorio al cual apache podra acceder o 
     Deberemos reintroducir el comando por cada usuario que deseemos introducir, pero muy importante de solo incluir `-c` la primera vez que introduzcamos el comando.
     
   - `Require all`: Si a continuación escribimos `granted` permitiremos a apache mostrar este directorio, `denied` prohibe el acceso.  
+
+## Modulos
+Los Modulos son componentes que agregan funcionalidades a apache que se pueden agregar en caso de requerirlos. Vamos a ver dos ejemplos:  
+- Info: Es un modulo que nos proporciona información sobre la configuración de nuestro servidor.  
+        Se habilita con `a2enmod info` y reiniciando apache, luego deberemos agregar las siguientes lineas a nuestor apache2.conf.
+
+        <Location "/server-info">
+              SetHandler server-info
+              Require IPS_CON_PERMISO_DE_CONSULTA
+        </Location>
+
+- Status: Muestra información de la actividad del servidor y de su rendimiento.
+          Lo habilitamos `a2enmod status` y reiniciamos, vamos a apache2.conf y agregamos:
+
+        <Location "/server-status">
+              SetHandler server-status
+              Require IPS_CON_PERMISO_DE_CONSULTA
+        </Location>
+- Userdir: Permite a distintos usuarios del servidor publicar sus propias paginas.
+          Escribimos `a2enmod userdir` y reiniciamos, ya estaria funcionando. Lo unico que se necesita es que los usuarios creen una carpeta en su directorio personal donde crearan sus páginas. Esta carpeta se deben llamar `/public_html` y para poder consultar estas paginas tendremos que hacer la siguiente busqueda:
+  `http://www.TU_DOMINIO/~NOMBRE_USUARIO/`
   
