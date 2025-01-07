@@ -36,7 +36,7 @@ Tras esto, iremos a modificarlo. Con control + W podremos buscar las lineas que 
 - `SiteDomain`= Nombre de nuestro dominio "Sitio1.com"  
 - `HostAliases`= localhost 127.0.0.1 sitio.com
 Guardamos el fichero y ejecutamos el siguiente script:  
-`/usr/lib/cgi-bin/awstats.pl -config=TU_DOMINIO -update`
+`/usr/lib/cgi-bin/awstats.pl -config=TU_DOMINIO -update`  
 Awstats ya esta configurado, ahora trabajaremos con apache2.
 
 Primero habilitamos el siguiente mod:  
