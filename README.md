@@ -59,4 +59,7 @@ Con esto se repetira el script cada tres horas y no se mostrara en el terminal.
 
 ## WordPress
 Es el gestor de contenido mas utilizado en el mundo, y para utilizarlo accederemos a su pagina oficial y lo descargaremos.  
-Despues de descargarlo moveremos el zip al directorio de nuestro dominio y lo decomprimiremos con unzip. Movemos el contenido de la carpeta wordpress que se nos habra creado a la raiz de nuestro dominio con `mv wordpress/* .` y luego borraremos dicha carpeta y el zip que descargamos.
+Despues de descargarlo moveremos el zip al directorio de nuestro dominio y lo decomprimiremos con unzip. Movemos el contenido de la carpeta wordpress que se nos habra creado a la raiz de nuestro dominio con `mv wordpress/* .` y luego borraremos dicha carpeta y el zip que descargamos.  
+Para continuar trabajando, necesitamos usar mysql. En el caso de no tenerlo instaldo escribiremos las siguientes lineas (Aseguraos de hacer un "apt update" antes):  
+`$ sudo apt install wget dirmngr software-properties-common apt-transport-https`: Instalamos dependencias.  
+`$ wget https://dev.mysql.com/get/mysql-apt-config_0.8.25-1_all.deb
